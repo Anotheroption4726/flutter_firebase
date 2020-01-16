@@ -1,3 +1,4 @@
+import 'package:flutter_firebase/services/auth.dart';
 import 'package:flutter/material.dart';
 
 class SignIn extends StatefulWidget {
@@ -6,6 +7,9 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
+
+  final AuthService _auth = AuthService();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,19 +17,31 @@ class _SignInState extends State<SignIn> {
       appBar: AppBar(
         backgroundColor: Colors.brown[400],
         elevation: 0.0,
-        title: Text('Sign in to App')
+        title: Text('Sign in to Brew Crew'),
       ),
       body: Container(
-        padding: EdgeInsets.symmetric(
-          vertical: 20, horizontal: 50),
-          child: RaisedButton(
-            child: Text('Sign in anon'),
-            onPressed: () async {
-              
+        padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
+        child: RaisedButton(
+          child: Text('sign in anon'),
+          onPressed:
+          /*
+          (){
+            print("it works");
+          }
+          */
+          
+          () async {
+            dynamic result = await _auth.signInAnon();
+            if(result == null){
+              print('error signing in');
+            } else {
+              print('signed in');
+              print(result);
             }
-          ),
-        )
+          },
+          
+        ),
+      ),
     );
   }
 }
-
