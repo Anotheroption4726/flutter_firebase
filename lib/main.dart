@@ -5,7 +5,7 @@ import 'package:flutter/gestures.dart';
 //void main() => runApp(MyApp());
 
 void main() {
-  debugPrintHitTestResults = true;
+  //debugPrintHitTestResults = true;
   runApp(MyApp());
 }
 
