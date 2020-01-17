@@ -15,11 +15,13 @@ class HomeState extends State<Home> {
 
   int colorIndex = 0;
 
+  Color colorPicked = Colors.brown[400];
+
   var colorChoice = 
   [
-    'Color 0',
-    'Color 1',
-    'Color 2'
+    'Brown',
+    'Blue',
+    'Green'
   ];
 
   @override
@@ -32,6 +34,16 @@ class HomeState extends State<Home> {
         colorIndex = colorChosen;
         print("$colorChoice[$colorIndex] chosen!");
         //print(questionIndex);
+
+        if(colorChosen == 1){
+          colorPicked = Colors.blue[400];
+        }
+        else if(colorChosen == 2){
+          colorPicked = Colors.green[400];
+        }
+        else{
+          colorPicked = Colors.brown[400];
+        }
       });
     }
 
@@ -39,7 +51,7 @@ class HomeState extends State<Home> {
       backgroundColor: Colors.brown[50],
       appBar: AppBar(
         title: Text('Flutter Firebase'),
-        backgroundColor: Colors.brown[400],
+        backgroundColor: colorPicked,
         elevation: 0.0,
         actions: <Widget>[
           FlatButton.icon(
@@ -56,15 +68,15 @@ class HomeState extends State<Home> {
         children: <Widget>[
           Text(colorChoice[colorIndex]),
           RaisedButton(
-            child: Text('Color 0'),
+            child: Text('Brown'),
             onPressed: () => pickColor(0)
           ),
           RaisedButton(
-            child: Text('Color 1'),
+            child: Text('Blue'),
             onPressed: () => pickColor(1)
           ),
           RaisedButton(
-            child: Text('Color 2'),
+            child: Text('Green'),
             onPressed: () => pickColor(2)
           ),
         ],
