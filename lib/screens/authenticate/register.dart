@@ -1,16 +1,16 @@
-import 'package:flutter_firebase/services/auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_firebase/services/auth.dart';
 
-class SignIn extends StatefulWidget {
+class Register extends StatefulWidget {
 
   final Function toggleView;
-  SignIn({this.toggleView});
+  Register({this.toggleView});
 
   @override
-  _SignInState createState() => _SignInState();
+  _RegisterState createState() => _RegisterState();
 }
 
-class _SignInState extends State<SignIn> {
+class _RegisterState extends State<Register> {
 
   final AuthService _auth = AuthService();
 
@@ -25,11 +25,11 @@ class _SignInState extends State<SignIn> {
       appBar: AppBar(
         backgroundColor: Colors.brown[400],
         elevation: 0.0,
-        title: Text('Login'),
+        title: Text('Register'),
         actions: <Widget>[
           FlatButton.icon(
             icon: Icon(Icons.person),
-            label: Text('Register'),
+            label: Text('Login'),
             onPressed: () {
               widget.toggleView();
             }
@@ -58,7 +58,7 @@ class _SignInState extends State<SignIn> {
               RaisedButton(
                 color: Colors.pink[400],
                 child: Text(
-                  'Sign in',
+                  'Sign up',
                   style: TextStyle(color: Colors.white)
                 ),
                 onPressed: () async {
@@ -69,19 +69,6 @@ class _SignInState extends State<SignIn> {
             ],
           ),
         )
-        /*
-        child: RaisedButton(
-          child: Text('sign in anon'),
-          onPressed:() async {
-            dynamic result = await _auth.signInAnon();
-            if(result == null){
-              print('error signing in');
-            } else {
-              print('signed in');
-              print(result.uid);
-            }
-          },
-        ),*/
       ),
     );
   }
