@@ -78,6 +78,10 @@ class HomeState extends State<Home> {
             child: Text('Green'),
             onPressed: () => pickColor(2)
           ),
+          RaisedButton(
+            child: Text('Fonctionalité'),
+            onPressed: () => {}
+          ),
         ],
       ),
     );
