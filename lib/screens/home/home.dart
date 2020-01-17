@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_firebase/services/auth.dart';
 
-//////////////////////////////////////////
-///
 class Home extends StatefulWidget{
   @override
   State<StatefulWidget> createState()
@@ -10,46 +8,33 @@ class Home extends StatefulWidget{
     return HomeState();
   }
 }
-///
-//////////////////////////////////////////
 
 class HomeState extends State<Home> {
 
   final AuthService _auth = AuthService();
 
-//////////////////////////////////////////
-///
-  int questionIndex = 0;
+  int colorIndex = 0;
 
-  var questions = 
+  var colorChoice = 
   [
     'Color 0',
     'Color 1',
     'Color 2'
   ];
-///
-//////////////////////////////////////////
 
   @override
   Widget build(BuildContext context) {
 
-//////////////////////////////////////////
-///
-    void answerQuestion()
+    void pickColor(int colorChosen)
     {
-      print("color 0 chosen!");
-
-      if(questionIndex < 1)
+      setState(()
       {
-        setState(()
-        {
-          questionIndex += 1;
-          print(questionIndex);
-        });
-      }
+        colorIndex = colorChosen;
+        print("$colorChoice[$colorIndex] chosen!");
+        //print(questionIndex);
+      });
     }
-///
-/////////////////////////////////////////
+
     return Scaffold(
       backgroundColor: Colors.brown[50],
       appBar: AppBar(
@@ -67,30 +52,23 @@ class HomeState extends State<Home> {
           )
         ],
       ),
-
-/////////////////////////////////////////
-///
-        body: Column(
-          children: <Widget>[
-            Text(questions[questionIndex]),
-            RaisedButton(
-              child: Text('Answer 0'),
-              onPressed: answerQuestion
-            ),
-            RaisedButton(
-              child: Text('Answer 1'),
-              onPressed: () => print("Color 1 chosen!")
-            ),
-            RaisedButton(
-              child: Text('Answer 2'),
-              onPressed: () => {
-                print("Color 2 chosen!")
-              }
-            ),
-          ],
-        ),
-///
-////////////////////////////////////////
+      body: Column(
+        children: <Widget>[
+          Text(colorChoice[colorIndex]),
+          RaisedButton(
+            child: Text('Color 0'),
+            onPressed: () => pickColor(0)
+          ),
+          RaisedButton(
+            child: Text('Color 1'),
+            onPressed: () => pickColor(1)
+          ),
+          RaisedButton(
+            child: Text('Color 2'),
+            onPressed: () => pickColor(2)
+          ),
+        ],
+      ),
     );
   }
 }
