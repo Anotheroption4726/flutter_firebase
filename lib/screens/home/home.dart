@@ -32,8 +32,7 @@ class HomeState extends State<Home> {
       setState(()
       {
         colorIndex = colorChosen;
-        print("$colorChoice[$colorIndex] chosen!");
-        //print(questionIndex);
+        print(colorIndex);
 
         if(colorChosen == 1){
           colorPicked = Colors.blue[400];
