@@ -32,7 +32,6 @@ class _SignInState extends State<SignIn> {
               print(result.uid);
             }
           },
-          
         ),
       ),
     );
